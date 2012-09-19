@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$('.intersectDiv').each(function(){
+					
+					var randomHeight = parseFloat((Math.random()*200)).toFixed(0);
+					var randomWidth = parseFloat((Math.random()*200)).toFixed(0); 
+					
+					$(this).height(randomHeight);
+					$(this).width(randomWidth);
+					$(this).css({"position" : "absolute" , "top" : randomHeight , "left" : randomWidth});
+					
+				});
+				var pos1 = $("#id1").position();
+				var pos2 = $("#id2").position();
+				
+				var width1 = $("#id1").width();
+				var width2 = $("#id2").width();
+				
+				var height1 = $("#id1").height();
+				var height2 = $("#id2").height();
+				
+				if(pos1.left < pos2.left){
+					var leastx = pos1.left;
+					var mostx = pos2.left;
+					var widthLeft = width1;
+				} else {
+					var leastx = pos2.left;
+					var mostx = pos1.left;
+					var widthLeft = width2;
+				}
+				
+				if(pos1.top < pos2.top){
+					var leasty = pos1.top;
+					var mosty = pos2.top;
+					var heightTop = height1;
+				} else {
+					var leasty = pos2.top;
+					var mosty = pos1.top;
+					var heightTop = height2;
+				}
+				
+				if(((mostx - leastx) < widthLeft) && ((mosty - leasty) < heightTop)){
+					alert("Rectangles intersect");
+				}
+
+  			});
+		</script>
+
+	</head>
+	<body>
+		<div id="intersecDivs">
+			<div class="intersectDiv" id="id1" style="background: #F00;"></div>
+			<div class="intersectDiv" id="id2" style="background: #0F0;"></div>
+		</div>
+	</body>
+</html>

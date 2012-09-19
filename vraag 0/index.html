@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			var r1 = new Object();
+			r1.x = 0;
+			r1.y = 10;
+			r1.width = 100;
+			r1.height = 50;
+			
+			var r2 = new Object();
+			r2.x = 90;
+			r2.y = 50;
+			r2.width = 100;
+			r2.height = 50;
+			
+			function rectIntersects (r1, r2){
+					
+					if(r1.x < r2.x){
+						var leastx = r1.x;
+						var mostx = r2.x;
+						var widthLeft = r1.width;
+					} else {
+						var leastx = r2.x;
+						var mostx = r1.x;
+						var widthLeft = r2.width;
+					}
+					
+					if(r1.y < r2.y){
+						var leasty = r1.y;
+						var mosty = r2.y;
+						var heightTop = r1.height;
+					} else {
+						var leasty = r2.y;
+						var mosty = r1.y;
+						var heightTop = r2.height;
+					}
+					
+					if(((mostx - leastx) < widthLeft) && ((mosty - leasty) < heightTop)){
+						console.log("true");
+						return true;
+					}
+	
+	  			};
+	  		$(document).ready(function(){
+		  		if (rectIntersects (r1, r2)) {
+			  		alert ("Rects intersect");
+			  	}
+	  		});	
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
