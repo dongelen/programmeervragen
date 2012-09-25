@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vraag 0 - Sander Wind</title>
+
+	<script type="text/javascript">
+
+	function rectIntersects( r1, r2 ) {
+		return !( ( r2.x < r1.x || r2.x > ( r1.x + r1.width ) ) || ( r2.y < r1.y || r2.y > ( r1.y + r1.height ) ) );
+	}
+
+	var r1 = new Object();
+		r1.x = 0;
+		r1.y = 10;
+		r1.width = 100;
+		r1.height = 50;
+
+	var r2 = new Object();
+		r2.x = 190;
+		r2.y = 50;
+		r2.width = 100;
+		r2.height = 50;
+
+	if ( rectIntersects( r1, r2 ) ) { 
+		alert( "Rects intersect" );
+	}
+
+	</script>
+
+</head>
+<body>
+</body>
+</html>
