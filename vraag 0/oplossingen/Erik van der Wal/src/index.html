@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" value="Erik van der Wal" />
+		<title>Rectangle Intersection Test</title>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+		function init ()
+		{
+			var r1 = createRectObject(00, 10, 100, 50);
+			var r2 = createRectObject(90, 50, 100, 50);
+			drawRects(r1, r2);
+
+			// rectIntersects en createRectObject functies zijn te vinden in script.js (ivm. hergebruik binnen test-suite)
+			if (rectIntersects(r1, r2)) { alert("Rects intersect"); }
+		}
+
+		function drawRects (r1, r2)
+		{
+			// Element voor eerste rechthoek
+			var el1 = document.createElement('div');
+			el1.style.backgroundColor = 'red';
+			el1.style.width = r1.width + 'px';
+			el1.style.height = r1.height + 'px';
+			el1.style.position = 'absolute';
+			el1.style.left = r1.x + 'px';
+			el1.style.top = r1.y + 'px';
+			el1.style.opacity = 0.6; // ivm. overlap
+
+			// Element voor tweede rechthoek
+			var el2 = document.createElement('div');
+			el2.style.backgroundColor = 'green';
+			el2.style.width = r2.width + 'px';
+			el2.style.height = r2.height + 'px';
+			el2.style.position = 'absolute';
+			el2.style.left = r2.x + 'px';
+			el2.style.top = r2.y + 'px';
+			el2.style.opacity = 0.6; // ivm. overlap
+
+			// Voeg beide rechthoeken toe aan een 'wrapper'
+			var wrapper = document.createElement('div');
+			wrapper.style.position = 'relative';
+			wrapper.appendChild(el1);				
+			wrapper.appendChild(el2);
+
+			// En voeg dat weer toe aan de body
+			document.body.appendChild(wrapper);
+		}		
+		</script>
+	</head>
+	<body onload="init();">
+
+		<h1>Uitleg</h1>
+		<p>De rechthoeken raken elkaar niet wanneer:</p>
+		<ul>
+			<li>De linkerzijde van R1 voorbij de rechterzijde van R2 ligt</li>
+			<li>De linkerzijde van R2 voorbij de rechterzijde van R1 ligt</li>
+			<li>De bovenzijde van R1 voorbij de onderzijde van R2 ligt</li>
+			<li>De bovenzijde van R2 voorbij de onderzijde van R1 ligt</li>
+		</ul>
+		<p>... en in alle andere gevallen, dus wel.</p>
+		<h2>Visueel</h2>
+		<!-- Elementen worden hier ge-append.. -->
+	</body>
+</html>
